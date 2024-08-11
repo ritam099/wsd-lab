@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified" attributeFormDefault="unqualified" 
+targetNamespace="http://www.example.com/payment" xmlns:payment="http://www.example.com/payment">
+
+    <!-- The pattern for phone numbers -->
+    <xs:simpleType name="phoneType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{3}-\d{3}-\d{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- The pattern for email addresses -->
+    <xs:simpleType name="emailType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Limiting and restriction for amount -->
+    <xs:simpleType name="amountType">
+        <xs:restriction base="xs:decimal">
+            <xs:minExclusive value="0"/>
+            <xs:maxExclusive value="1000"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- the payer details complex type -->
+    <xs:complexType name="payerType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="phone" type="payment:phoneType"/>
+            <xs:element name="email" type="payment:emailType"/>
+            <xs:element name="address" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Define the transaction details complex type -->
+    <xs:complexType name="transactionType">
+        <xs:sequence>
+            <xs:element name="payer" type="payment:payerType"/>
+            <xs:element name="amount" type="payment:amountType"/>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="method" type="xs:string"/>
+            <xs:element name="reference" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+    </xs:complexType>
+
+    <!-- Defining the root element -->
+    <xs:complexType name="transactionsType">
+        <xs:sequence>
+            <xs:element name="transaction" type="payment:transactionType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Declaration of the root element -->
+    <xs:element name="transactions" type="payment:transactionsType"/>
+
+</xs:schema>

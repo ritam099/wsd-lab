@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="payment.xsl" type="text/xsl" ?>
+<payment:transactions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:payment="http://www.example.com/payment" xsi:schemaLocation="http://www.example.com/payment payment.xsd">
+
+    <payment:transaction id="t1">
+        <payment:payer>
+            <payment:name>Healthy Cleaning Service</payment:name>
+            <payment:phone>156-456-7890</payment:phone>
+            <payment:email>contact@healthycleaning.com</payment:email>
+            <payment:address>123 Tiffin Street, Food City</payment:address>
+        </payment:payer>
+        <payment:details>
+            <payment:amount>15.99</payment:amount>
+            <payment:date>2024-08-10</payment:date>
+            <payment:status>Completed</payment:status>
+            <payment:method>Credit Card</payment:method>
+            <payment:reference>HTS20240810XYZ</payment:reference>
+        </payment:details>
+        <payment:items>
+            <payment:item>
+                <payment:itemName>Cleaning Service Package</payment:itemName>
+                <payment:itemPrice>10.00</payment:itemPrice>
+            </payment:item>
+            <payment:item>
+                <payment:itemName>Additional Service</payment:itemName>
+                <payment:itemPrice>5.99</payment:itemPrice>
+            </payment:item>
+        </payment:items>
+    </payment:transaction>
+
+    <payment:transaction id="t2">
+        <payment:payer>
+            <payment:name>Quick Grocery Delivery</payment:name>
+            <payment:phone>987-654-3210</payment:phone>
+            <payment:email>info@quickgrocerydeliv.com</payment:email>
+            <payment:address>456 Snack Lane, Fastfood Town</payment:address>
+        </payment:payer>
+        <payment:details>
+            <payment:amount>12.50</payment:amount>
+            <payment:date>2024-08-11</payment:date>
+            <payment:status>Pending</payment:status>
+            <payment:method>PayPal</payment:method>
+            <payment:reference>QBT20240811ABC</payment:reference>
+        </payment:details>
+        <payment:items>
+            <payment:item>
+                <payment:itemName>Grocery Package 1</payment:itemName>
+                <payment:itemPrice>7.00</payment:itemPrice>
+            </payment:item>
+            <payment:item>
+                <payment:itemName>Grocery Package 2</payment:itemName>
+                <payment:itemPrice>5.50</payment:itemPrice>
+            </payment:item>
+        </payment:items>
+    </payment:transaction>
+
+    <payment:transaction id="t3">
+        <payment:payer>
+            <payment:name>Delightful Tiffin</payment:name>
+            <payment:phone>234-567-8901</payment:phone>
+            <payment:email>support@delightfultiffin.com</payment:email>
+            <payment:address>789 Gourmet Avenue, Cuisine City</payment:address>
+        </payment:payer>
+        <payment:details>
+            <payment:amount>18.00</payment:amount>
+            <payment:date>2024-08-12</payment:date>
+            <payment:status>Completed</payment:status>
+            <payment:method>Bank Transfer</payment:method>
+            <payment:reference>DT20240812LMN</payment:reference>
+        </payment:details>
+        <payment:items>
+            <payment:item>
+                <payment:itemName>Deluxe Tiffin Package</payment:itemName>
+                <payment:itemPrice>10.00</payment:itemPrice>
+            </payment:item>
+            <payment:item>
+                <payment:itemName>Special Dessert</payment:itemName>
+                <payment:itemPrice>8.00</payment:itemPrice>
+            </payment:item>
+        </payment:items>
+    </payment:transaction>
+
+</payment:transactions>
