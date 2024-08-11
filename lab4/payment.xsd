@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified" attributeFormDefault="unqualified" 
+targetNamespace="http://www.example.com/payment" xmlns:payment="http://www.example.com/payment">
+
+    <!-- Restriction for amount -->
+    <xs:simpleType name="amountType">
+        <xs:restriction base="xs:decimal">
+            <xs:minExclusive value="0"/>
+            <xs:maxExclusive value="10000"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Restriction for card numbers -->
+    <xs:simpleType name="cardNumberType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{16}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="transactionType">
+        <xs:sequence>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="amount" type="payment:amountType"/>
+            <xs:element name="currency" type="xs:string"/>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="cardNumber" type="payment:cardNumberType"/>
+            <xs:element name="expiryDate" type="xs:gYearMonth"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+    </xs:complexType>
+
+    <xs:element name="transactions" type="payment:transactionListType"/>
+
+    <xs:complexType name="transactionListType">
+        <xs:sequence>
+            <xs:element name="transaction" type="payment:transactionType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

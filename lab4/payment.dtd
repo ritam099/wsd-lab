@@ -1,0 +1,10 @@
+<!ELEMENT transactions (transaction+)>
+<!ELEMENT transaction (username, amount, currency, date, status, cardNumber, expiryDate)>
+<!ATTLIST transaction id ID #REQUIRED>
+<!ELEMENT username (#PCDATA)>
+<!ELEMENT amount (#PCDATA)>
+<!ELEMENT currency (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT status (#PCDATA)>
+<!ELEMENT cardNumber (#PCDATA)>
+<!ELEMENT expiryDate (#PCDATA)>
